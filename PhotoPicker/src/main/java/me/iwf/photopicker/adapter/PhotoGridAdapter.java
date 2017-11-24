@@ -109,7 +109,7 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
         options.centerCrop()
             .dontAnimate()
             .override(imageSize, imageSize)
-            .placeholder(R.drawable.__picker_ic_photo_black_48dp)
+            .placeholder(R.color.__picker_loading_bg)
             .error(R.drawable.__picker_ic_broken_image_black_48dp);
 
         glide.setDefaultRequestOptions(options)

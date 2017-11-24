@@ -12,4 +12,7 @@
   <color name="__picker_item_photo_border_selected">#ff99cc00</color>
   <color name="__picker_item_photo_border_n">#33ffffff</color>
 
+
+  <color name="__picker_loading_bg">#efefef</color>
+
 </resources>

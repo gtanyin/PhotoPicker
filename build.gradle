@@ -22,7 +22,3 @@ allprojects {
         options.addStringOption('Xdoclint:none', '-quiet')
     }
 }
-
-task wrapper(type: Wrapper) {
-    gradleVersion = "3.2.1"
-}

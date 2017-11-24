@@ -61,8 +61,6 @@ public class PhotoPickerActivity extends AppCompatActivity {
     setTitle(R.string.__picker_title);
 
     ActionBar actionBar = getSupportActionBar();
-
-    assert actionBar != null;
     actionBar.setDisplayHomeAsUpEnabled(true);
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       actionBar.setElevation(25);
