@@ -1,5 +1,6 @@
 package me.iwf.photopicker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,8 @@ import me.iwf.photopicker.event.OnItemCheckListener;
 import me.iwf.photopicker.event.OnPhotoClickListener;
 
 import static me.iwf.photopicker.PhotoPicker.EXTRA_ORIGINAL_PHOTOS;
+import static me.iwf.photopicker.PhotoPreview.EXTRA_CURRENT_ITEM;
+import static me.iwf.photopicker.PhotoPreview.EXTRA_PHOTOS;
 
 /**
  * Created by ghtan on 2017/11/27.
@@ -43,7 +46,7 @@ public class PhotoPickerActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.__picker_activity_photoo_picker);
+        setContentView(R.layout.__picker_activity_photo_picker);
         initView();
         initEvent();
     }
@@ -55,6 +58,10 @@ public class PhotoPickerActivity extends AppCompatActivity implements View.OnCli
         photoGridAdapter.setOnPhotoClickListener(new OnPhotoClickListener() {
             @Override
             public void onClick(View v, int position) {
+                Intent intent = new Intent(PhotoPickerActivity.this, PhotoPagerActivity.class);
+                intent.putExtra(EXTRA_CURRENT_ITEM, position);
+                intent.putExtra(EXTRA_PHOTOS, turnPhotoListToPathList(photos));
+                startActivity(intent);
                 Toast.makeText(PhotoPickerActivity.this, "你点击了第" + position + "个Item", Toast.LENGTH_SHORT).show();
             }
         });
@@ -110,11 +117,20 @@ public class PhotoPickerActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    private ArrayList<String> turnPhotoListToPathList(List<Photo> photos) {
+        ArrayList<String> paths = new ArrayList<>();
+        for (Photo photo : photos) {
+            paths.add(photo.getPath());
+        }
+        return paths;
+    }
+
     @Override
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.cancel) {
             finish();
+            PhotoPathsEntity.getInstance().removeAll();
             AlbumPickerActivity.getActivity().finish();
         } else if (i == R.id.title_finish) {
             finish();

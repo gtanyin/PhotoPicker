@@ -49,7 +49,6 @@ public class ImagePagerFragment extends Fragment {
     args.putStringArray(ARG_PATH, paths.toArray(new String[paths.size()]));
     args.putInt(ARG_CURRENT_ITEM, currentItem);
     f.setArguments(args);
-
     return f;
   }
 

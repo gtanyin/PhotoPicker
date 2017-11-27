@@ -32,9 +32,7 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
 
     private OnItemCheckListener onItemCheckListener = null;
     private OnPhotoClickListener onPhotoClickListener = null;
-    private View.OnClickListener onCameraClickListener = null;
 
-    public final static int ITEM_TYPE_CAMERA = 100;
     public final static int ITEM_TYPE_PHOTO = 101;
     private List<Photo> photos;
 
@@ -69,32 +67,14 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
     public PhotoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.__picker_item_photo, parent, false);
         final PhotoViewHolder holder = new PhotoViewHolder(itemView);
-        if (viewType == ITEM_TYPE_CAMERA) {
-            holder.vSelected.setVisibility(View.GONE);
-            holder.ivPhoto.setScaleType(ImageView.ScaleType.CENTER);
-
-            holder.ivPhoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (onCameraClickListener != null) {
-                        onCameraClickListener.onClick(view);
-                    }
-                }
-            });
-        }
         return holder;
     }
 
 
     @Override
     public void onBindViewHolder(final PhotoViewHolder holder, int position) {
-
-        if (getItemViewType(position) == ITEM_TYPE_PHOTO) {
-
             final Photo photo;
-
             photo = photos.get(position);
-
             boolean canLoadImage = AndroidLifecycleUtils.canLoadImage(holder.ivPhoto.getContext());
 
             if (canLoadImage) {
@@ -143,13 +123,7 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
                     }
                 }
             });
-
-            boolean isChecked = PhotoPathsEntity.getInstance().isAdded(photo.getPath());
-            holder.vSelected.setSelected(isChecked);
-
-        } else {
-            holder.ivPhoto.setImageResource(R.drawable.__picker_camera);
-        }
+            holder.vSelected.setSelected(PhotoPathsEntity.getInstance().isAdded(photo.getPath()));
     }
 
 
