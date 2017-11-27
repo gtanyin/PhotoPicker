@@ -29,11 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="me.iwf.photopicker.PhotoPickerActivity" />
-
         <activity android:name="me.iwf.photopicker.PhotoPagerActivity" />
         <activity android:name="me.iwf.photopicker.AlbumPickerActivity" />
-        <activity android:name="me.iwf.photopicker.PhotoPickerActy" />
+        <activity android:name="me.iwf.photopicker.PhotoPickerActivity" />
 
     </application>
 
