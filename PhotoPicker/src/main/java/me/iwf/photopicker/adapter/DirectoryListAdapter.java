@@ -16,13 +16,13 @@ import me.iwf.photopicker.entity.PhotoDirectory;
 /**
  * Created by donglua on 15/6/28.
  */
-public class PopupDirectoryListAdapter extends BaseAdapter {
+public class DirectoryListAdapter extends BaseAdapter {
 
 
   private List<PhotoDirectory> directories = new ArrayList<>();
   private RequestManager glide;
 
-  public PopupDirectoryListAdapter(RequestManager glide, List<PhotoDirectory> directories) {
+  public DirectoryListAdapter(RequestManager glide, List<PhotoDirectory> directories) {
     this.directories = directories;
     this.glide = glide;
   }
@@ -76,8 +76,7 @@ public class PopupDirectoryListAdapter extends BaseAdapter {
       options.dontAnimate()
           .dontTransform()
           .override(800, 800)
-          .placeholder(R.color.__picker_loading_bg)
-          .error(R.drawable.__picker_ic_broken_image_black_48dp);
+          .placeholder(R.color.__picker_loading_bg);
       glide.setDefaultRequestOptions(options)
           .load(directory.getCoverPath())
           .thumbnail(0.1f)

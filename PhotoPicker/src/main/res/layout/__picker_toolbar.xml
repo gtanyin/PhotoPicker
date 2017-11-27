@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:minHeight="50dp"
-    android:background="@color/__picker_common_primary"
-    android:gravity="clip_vertical"
-    android:id="@+id/toolbar"/>

@@ -14,8 +14,9 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.iwf.photopicker.adapter.PopupDirectoryListAdapter;
+import me.iwf.photopicker.adapter.DirectoryListAdapter;
 import me.iwf.photopicker.entity.PhotoDirectory;
+import me.iwf.photopicker.entity.PhotoPathsEntity;
 import me.iwf.photopicker.utils.MediaStoreHelper;
 
 import static me.iwf.photopicker.PhotoPicker.EXTRA_ORIGINAL_PHOTOS;
@@ -31,7 +32,7 @@ public class AlbumPickerActivity extends AppCompatActivity {
 
     //所有photos的路径
     private List<PhotoDirectory> directories = new ArrayList<>();
-    private PopupDirectoryListAdapter listAdapter;
+    private DirectoryListAdapter listAdapter;
     private Bundle mediaStoreArgs;
 
     private static AppCompatActivity activity;
@@ -48,7 +49,7 @@ public class AlbumPickerActivity extends AppCompatActivity {
 
         initIntent();
 
-        listAdapter = new PopupDirectoryListAdapter(Glide.with(this), directories);
+        listAdapter = new DirectoryListAdapter(Glide.with(this), directories);
 
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(listAdapter);

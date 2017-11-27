@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.iwf.photopicker.PhotoPathsEntity;
+import me.iwf.photopicker.entity.PhotoPathsEntity;
 import me.iwf.photopicker.entity.Photo;
 import me.iwf.photopicker.event.Selectable;
 

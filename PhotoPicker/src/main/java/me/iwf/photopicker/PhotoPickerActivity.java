@@ -21,12 +21,15 @@ import java.util.List;
 import me.iwf.photopicker.adapter.PhotoGridAdapter;
 import me.iwf.photopicker.entity.Photo;
 import me.iwf.photopicker.entity.PhotoDirectory;
+import me.iwf.photopicker.entity.PhotoPathsEntity;
 import me.iwf.photopicker.event.OnItemCheckListener;
 import me.iwf.photopicker.event.OnPhotoClickListener;
+import me.iwf.photopicker.utils.PermissionsConstant;
+import me.iwf.photopicker.utils.PermissionsUtils;
 
+import static me.iwf.photopicker.PhotoPicker.EXTRA_CURRENT_ITEM;
 import static me.iwf.photopicker.PhotoPicker.EXTRA_ORIGINAL_PHOTOS;
-import static me.iwf.photopicker.PhotoPreview.EXTRA_CURRENT_ITEM;
-import static me.iwf.photopicker.PhotoPreview.EXTRA_PHOTOS;
+import static me.iwf.photopicker.PhotoPicker.EXTRA_PHOTOS;
 
 /**
  * Created by ghtan on 2017/11/27.
@@ -82,6 +85,9 @@ public class PhotoPickerActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initView() {
+
+        PermissionsUtils.checkReadStoragePermission(this);
+
         initDirectories();
         originalPhotos = getIntent().getStringArrayListExtra(EXTRA_ORIGINAL_PHOTOS);
 
@@ -106,6 +112,15 @@ public class PhotoPickerActivity extends AppCompatActivity implements View.OnCli
         String photosJson = getIntent().getStringExtra(AlbumPickerActivity.PHOTOS_LIST);
         photoDirectory = new Gson().fromJson(photosJson, PhotoDirectory.class);
         photos = photoDirectory.getPhotos();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (null != photoGridAdapter) {
+            photoGridAdapter.notifyDataSetChanged();
+            updateNumber();
+        }
     }
 
     private void updateNumber() {

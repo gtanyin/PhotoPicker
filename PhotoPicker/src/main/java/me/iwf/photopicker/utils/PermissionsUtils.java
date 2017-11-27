@@ -34,31 +34,4 @@ public class PermissionsUtils {
         }
         return readStoragePermissionGranted;
     }
-
-    public static boolean checkWriteStoragePermission(Fragment fragment) {
-
-        int writeStoragePermissionState =
-                ContextCompat.checkSelfPermission(fragment.getContext(), WRITE_EXTERNAL_STORAGE);
-
-        boolean writeStoragePermissionGranted = writeStoragePermissionState == PackageManager.PERMISSION_GRANTED;
-
-        if (!writeStoragePermissionGranted) {
-            fragment.requestPermissions(PermissionsConstant.PERMISSIONS_EXTERNAL_WRITE,
-                    PermissionsConstant.REQUEST_EXTERNAL_WRITE);
-        }
-        return writeStoragePermissionGranted;
-    }
-
-    public static boolean checkCameraPermission(Fragment fragment) {
-        int cameraPermissionState = ContextCompat.checkSelfPermission(fragment.getContext(), CAMERA);
-
-        boolean cameraPermissionGranted = cameraPermissionState == PackageManager.PERMISSION_GRANTED;
-
-        if (!cameraPermissionGranted) {
-            fragment.requestPermissions(PermissionsConstant.PERMISSIONS_CAMERA,
-                    PermissionsConstant.REQUEST_CAMERA);
-        }
-        return cameraPermissionGranted;
-    }
-
 }

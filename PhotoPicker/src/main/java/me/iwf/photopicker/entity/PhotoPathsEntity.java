@@ -1,4 +1,4 @@
-package me.iwf.photopicker;
+package me.iwf.photopicker.entity;
 
 import java.util.ArrayList;
 import java.util.List;

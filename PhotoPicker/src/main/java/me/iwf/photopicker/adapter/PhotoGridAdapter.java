@@ -16,12 +16,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.iwf.photopicker.PhotoPathsEntity;
+import me.iwf.photopicker.entity.PhotoPathsEntity;
 import me.iwf.photopicker.R;
 import me.iwf.photopicker.entity.Photo;
 import me.iwf.photopicker.event.OnItemCheckListener;
 import me.iwf.photopicker.event.OnPhotoClickListener;
-import me.iwf.photopicker.utils.AndroidLifecycleUtils;
 
 /**
  * Created by donglua on 15/5/31.
@@ -75,21 +74,16 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
     public void onBindViewHolder(final PhotoViewHolder holder, int position) {
             final Photo photo;
             photo = photos.get(position);
-            boolean canLoadImage = AndroidLifecycleUtils.canLoadImage(holder.ivPhoto.getContext());
-
-            if (canLoadImage) {
                 final RequestOptions options = new RequestOptions();
                 options.centerCrop()
                         .dontAnimate()
                         .override(imageSize, imageSize)
-                        .placeholder(R.color.__picker_loading_bg)
-                        .error(R.drawable.__picker_ic_broken_image_black_48dp);
+                        .placeholder(R.color.__picker_loading_bg);
 
                 glide.setDefaultRequestOptions(options)
                         .load(new File(photo.getPath()))
                         .thumbnail(0.5f)
                         .into(holder.ivPhoto);
-            }
 
 
 
