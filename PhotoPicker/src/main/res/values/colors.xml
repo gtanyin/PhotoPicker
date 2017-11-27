@@ -12,6 +12,12 @@
   <color name="__picker_item_photo_border_selected">#ff99cc00</color>
   <color name="__picker_item_photo_border_n">#33ffffff</color>
 
+  <color name="__picker_item_text_name">#222222</color>
+  <color name="__picker_item_text_number">#3F3F3F</color>
+
+  <color name="__picker_confirm_bg_available">#3F3F3F</color>
+  <color name="__picker_confirm_bg_unavailable">#3F3F3F</color>
+
 
   <color name="__picker_loading_bg">#efefef</color>
 

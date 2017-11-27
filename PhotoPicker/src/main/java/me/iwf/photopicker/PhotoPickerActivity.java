@@ -128,7 +128,6 @@ public class PhotoPickerActivity extends AppCompatActivity {
         //预览界面 完成总是可点的，没选就把默认当前图片
         menuDoneItem.setEnabled(true);
       }
-
     }
   }
 

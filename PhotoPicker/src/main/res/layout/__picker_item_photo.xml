@@ -9,7 +9,6 @@
       android:id="@+id/iv_photo"
       android:scaleType="centerCrop"
       android:layout_width="match_parent"
-      android:background="@drawable/__picker_photo_bg"
       android:layout_height="match_parent"
       android:adjustViewBounds="true"
       />
@@ -18,8 +17,8 @@
       android:layout_alignParentTop="true"
       android:layout_alignParentRight="true"
       android:clickable="true"
-      android:paddingTop="10dip"
-      android:paddingRight="10dip"
+      android:paddingTop="3dp"
+      android:paddingRight="3dp"
       android:paddingLeft="20dip"
       android:paddingBottom="20dip"
       android:id="@+id/v_selected"

@@ -29,21 +29,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name="me.iwf.photopicker.PhotoPickerActivity" />
 
+        <activity android:name="me.iwf.photopicker.PhotoPagerActivity" />
+        <activity android:name="me.iwf.photopicker.AlbumPickerActivity" />
+        <activity android:name="me.iwf.photopicker.PhotoPickerActy" />
 
-        <activity
-            android:theme="@style/customTheme"
-            android:name="me.iwf.photopicker.PhotoPickerActivity"
-            />
-
-        <activity
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:name="me.iwf.photopicker.PhotoPagerActivity"
-            />
-
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="423ff17515038a50c41085cc2dbd0087d2e51cbb" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

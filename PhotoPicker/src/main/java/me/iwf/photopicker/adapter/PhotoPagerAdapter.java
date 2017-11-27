@@ -51,7 +51,7 @@ public class PhotoPagerAdapter extends PagerAdapter {
       options.dontAnimate()
           .dontTransform()
           .override(800, 800)
-          .placeholder(R.drawable.__picker_ic_photo_black_48dp)
+          .placeholder(R.color.__picker_loading_bg)
           .error(R.drawable.__picker_ic_broken_image_black_48dp);
       mGlide.setDefaultRequestOptions(options).load(uri)
               .thumbnail(0.1f)

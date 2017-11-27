@@ -2,6 +2,7 @@ package me.iwf.photopicker.entity;
 
 import android.text.TextUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import me.iwf.photopicker.utils.FileUtils;
 /**
  * Created by donglua on 15/6/28.
  */
-public class PhotoDirectory {
+public class PhotoDirectory implements Serializable {
 
   private String id;
   private String coverPath;
