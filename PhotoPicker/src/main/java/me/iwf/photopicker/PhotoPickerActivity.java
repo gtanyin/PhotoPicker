@@ -24,7 +24,6 @@ import me.iwf.photopicker.entity.PhotoDirectory;
 import me.iwf.photopicker.entity.PhotoPathsEntity;
 import me.iwf.photopicker.event.OnItemCheckListener;
 import me.iwf.photopicker.event.OnPhotoClickListener;
-import me.iwf.photopicker.utils.PermissionsConstant;
 import me.iwf.photopicker.utils.PermissionsUtils;
 
 import static me.iwf.photopicker.PhotoPicker.EXTRA_CURRENT_ITEM;
@@ -57,6 +56,7 @@ public class PhotoPickerActivity extends AppCompatActivity implements View.OnCli
     private void initEvent() {
         findViewById(R.id.cancel).setOnClickListener(this);
         findViewById(R.id.title_finish).setOnClickListener(this);
+        findViewById(R.id.preview).setOnClickListener(this);
 
         photoGridAdapter.setOnPhotoClickListener(new OnPhotoClickListener() {
             @Override
@@ -65,7 +65,6 @@ public class PhotoPickerActivity extends AppCompatActivity implements View.OnCli
                 intent.putExtra(EXTRA_CURRENT_ITEM, position);
                 intent.putExtra(EXTRA_PHOTOS, turnPhotoListToPathList(photos));
                 startActivity(intent);
-                Toast.makeText(PhotoPickerActivity.this, "你点击了第" + position + "个Item", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -150,9 +149,11 @@ public class PhotoPickerActivity extends AppCompatActivity implements View.OnCli
         } else if (i == R.id.title_finish) {
             finish();
         } else if (i == R.id.confirm) {
-            Toast.makeText(this, "你选择了" + PhotoPathsEntity.getInstance().getPaths() + "张图片", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "你选择了" + PhotoPathsEntity.getInstance().getPaths().size() + "张图片", Toast.LENGTH_SHORT).show();
             finish();
             AlbumPickerActivity.getActivity().finish();
+        } else if (i == R.id.preview) {
+            startActivity(new Intent(PhotoPickerActivity.this, PhotoPagerActivity.class));
         }
     }
 }
